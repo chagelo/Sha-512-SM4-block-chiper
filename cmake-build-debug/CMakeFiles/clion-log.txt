@@ -1,0 +1,4 @@
+"C:\clion install\clion folder\CLion 2018.2.4\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=C:/MINGW/bin/mingw32-make.exe -G "CodeBlocks - MinGW Makefiles" "C:\Users\19143\Desktop\My program\Clion program\SHA-512_SM4"
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/Users/19143/Desktop/My program/Clion program/SHA-512_SM4/cmake-build-debug

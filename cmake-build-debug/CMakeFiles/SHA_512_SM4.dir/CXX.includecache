@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/19143/Desktop/My program/Clion program/SHA-512_SM4/SM4.h
+const.h
+C:/Users/19143/Desktop/My program/Clion program/SHA-512_SM4/const.h
+
+C:/Users/19143/Desktop/My program/Clion program/SHA-512_SM4/const.h
+cstdint
+-
+iostream
+-
+cstring
+-
+vector
+-
+
+C:/Users/19143/Desktop/My program/Clion program/SHA-512_SM4/main.cpp
+SM4.h
+C:/Users/19143/Desktop/My program/Clion program/SHA-512_SM4/SM4.h
+iomanip
+-
+
