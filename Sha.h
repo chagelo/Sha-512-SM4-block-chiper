@@ -11,8 +11,8 @@
 class Sha {
 private:
     static void expandpwd(string &pwd);
-    static void blockprocess(uint64_t *plain);
-    static void round(uint64_t W, uint64_t K);
+    static void blockhash(uint64_t *plain, uint64_t *H);
+    static void round(uint64_t W, uint64_t K, uint64_t *H);
     static void expandW(uint64_t *plain, uint64_t *W);
     static void nextroundH(uint64_t H[8]);
 
@@ -22,7 +22,7 @@ private:
     static uint64_t Sigma1(uint64_t x);
 public:
 
-    static void process(string pwd);
+    static void process(string pwd, uint64_t *H);
     static void print();
 };
 

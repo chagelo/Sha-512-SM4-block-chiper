@@ -14,6 +14,7 @@ using std::string;
 using std::vector;
 using std::cout;
 using std::endl;
+using std::swap;
 
 //if x, then y, otherwise z
 #define Ch(x, y, z) ((x & y) ^ ((~x) & z))

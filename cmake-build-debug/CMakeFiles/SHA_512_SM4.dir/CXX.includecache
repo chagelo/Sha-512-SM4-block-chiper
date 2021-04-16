@@ -6,9 +6,25 @@
 
 #IncludeRegexTransform: 
 
+C:/Users/19143/Desktop/My program/Clion program/SHA-512_SM4/SM4.cpp
+SM4.h
 C:/Users/19143/Desktop/My program/Clion program/SHA-512_SM4/SM4.h
+
+C:/Users/19143/Desktop/My program/Clion program/SHA-512_SM4/SM4.h
+Sha.h
+C:/Users/19143/Desktop/My program/Clion program/SHA-512_SM4/Sha.h
+
+C:/Users/19143/Desktop/My program/Clion program/SHA-512_SM4/Sha.h
+Utils.h
+C:/Users/19143/Desktop/My program/Clion program/SHA-512_SM4/Utils.h
 const.h
 C:/Users/19143/Desktop/My program/Clion program/SHA-512_SM4/const.h
+
+C:/Users/19143/Desktop/My program/Clion program/SHA-512_SM4/Utils.h
+global_var.h
+C:/Users/19143/Desktop/My program/Clion program/SHA-512_SM4/global_var.h
+iostream
+-
 
 C:/Users/19143/Desktop/My program/Clion program/SHA-512_SM4/const.h
 cstdint
@@ -20,9 +36,7 @@ cstring
 vector
 -
 
-C:/Users/19143/Desktop/My program/Clion program/SHA-512_SM4/main.cpp
-SM4.h
-C:/Users/19143/Desktop/My program/Clion program/SHA-512_SM4/SM4.h
-iomanip
+C:/Users/19143/Desktop/My program/Clion program/SHA-512_SM4/global_var.h
+cstdint
 -
 

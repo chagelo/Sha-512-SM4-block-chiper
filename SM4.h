@@ -5,8 +5,7 @@
 #ifndef SHA_512_SM4_SM4_H
 #define SHA_512_SM4_SM4_H
 
-#include "const.h"
-
+#include "Sha.h"
 
 class SM4 {
 private:
@@ -18,7 +17,20 @@ private:
     static uint32_t permutation_T2(uint32_t B);
 
 public:
-    static void keyexpand(uint32_t *MK, uint32_t *rk);
+    static void keyexpand(uint32_t *MK, uint32_t *rk, const int cryptflag);
+    //static void encrypt_decrypt()
+    static void preprocess(string plainpath, string pwd);
+    static void crypt_ecb(uint32_t *plain, const int len, uint32_t *rk);
+    static void encrypt_cbc(uint32_t *plain, const int len, uint32_t *rk, uint32_t *IV);
+    static void decrypt_cbc(uint32_t *chiper, const int len, uint32_t *rk, uint32_t *IV);
+    static void encrypt_cfb(uint32_t *plain, const int len, uint32_t *rk, uint32_t *IV);
+    static void decrypt_cfb(uint32_t *chiper, const int len, uint32_t *rk, uint32_t *IV);
+    static void encrypt_ofb(uint32_t *plain, const int len, uint32_t *rk, uint32_t *IV);
+    static void decrypt_ofb(uint32_t *chiper, const int len, uint32_t *rk, uint32_t *IV);
+    static void encrypt_ctr(uint32_t *plain, const int len, uint32_t *rk, uint32_t *IV);
+    static void decrypt_ctr(uint32_t *chiper, const int len, uint32_t *rk, uint32_t *IV);
+    static void block_crypt(uint32_t *plainblock, uint32_t *rk);
+    static void padding(uint32_t *)
 };
 
 
