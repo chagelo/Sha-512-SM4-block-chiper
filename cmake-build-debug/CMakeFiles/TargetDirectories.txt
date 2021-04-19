@@ -1,3 +1,0 @@
-C:/Users/19143/Desktop/My program/Clion program/SHA-512_SM4/cmake-build-debug/CMakeFiles/SHA_512_SM4.dir
-C:/Users/19143/Desktop/My program/Clion program/SHA-512_SM4/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/19143/Desktop/My program/Clion program/SHA-512_SM4/cmake-build-debug/CMakeFiles/rebuild_cache.dir
