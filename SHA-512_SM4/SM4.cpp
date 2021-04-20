@@ -6,7 +6,7 @@
 
 // mk are encrypt keys, rk are round keys
 // MK = (MK0, MK1, MK2, MK3), MKi is 32-bit
-void SM4::keyexpand(uint32_t *MK, uint32_t *rk, const int cryptflag) {
+void SM4::keyexpand(uint32_t *MK, uint32_t *rk, const int &cryptflag) {
     // temp K
     uint32_t K[36];
 
@@ -100,7 +100,11 @@ void SM4::encrypt(string pwd, string filepath, string savefile, string mode)
     assert(all_len % 4 == 0);
 
 
-    uint32_t IV[4] = {0};
+    uint32_t IV[4];
+    genIV(IV);
+
+    // uint32_t *IV = genIV();
+
 //    startTime = std::chrono::high_resolution_clock::now();
     switch (Utils::_stoi(mode)) {
         case ECB: crypt_ecb((uint32_t *)&plain[0], all_len / 4, rk);  break;
@@ -109,6 +113,7 @@ void SM4::encrypt(string pwd, string filepath, string savefile, string mode)
         case OFB:encrypt_ofb((uint32_t *)&plain[0], all_len / 4, rk, IV);  break;
         case CTR:encrypt_ctr((uint32_t *)&plain[0], all_len / 4, rk, IV);  break;
     }
+
 //    endTime = std::chrono::high_resolution_clock::now();
 //    x = std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count();
 //    cout << "solve time:" << x << endl;
@@ -155,7 +160,14 @@ void SM4::decrypt(std::string pwd, std::string filepath, std::string savefile, s
 
     assert(len % 4 == 0);
 
-    uint32_t IV[4] = {0};
+    uint32_t IV[4];
+    readIV(IV);
+
+    // the below code is wrong, but don not know why
+    // uint32_t *IV = readIV();
+
+
+
     //auto startTime = std::chrono::high_resolution_clock::now();
     switch (Utils::_stoi(mode)) {
         case ECB:
@@ -183,12 +195,20 @@ void SM4::decrypt(std::string pwd, std::string filepath, std::string savefile, s
     // cout << endl;
 
 
+
+    // debug
+    // printf("%u, %x, %x\n", len, chiper[len - 1], chiper[len - 2]);
+    // cout << "write file size " << len << endl;
+
+
+
     // split, contrary to padding
-    printf("%u, %x, %x\n", len, chiper[len - 1], chiper[len - 2]);
     len -= (size_t)chiper[len - 1];
-    cout << "write file size " << len << endl;
+
+
     // write decrypted data to file
     Utils::writefile(savefile, chiper, len);
+
 
     return;
 }
@@ -327,3 +347,32 @@ void SM4::decrypt_ctr(uint32_t *chiper, const int len, uint32_t *rk, uint32_t *I
         }
     }
 }
+
+// generate iv randomly, then write to fixed file
+void SM4::genIV(uint32_t *IV)
+{
+    // generate IV randomly
+    srand(time(NULL));
+    for (int i = 0; i < 4; ++i)
+        IV[i] = rand();
+
+
+    std::string path = "D:/IV";
+    // the mode ios::out of ofstream support that if file does not exist, it will create a file
+    std::ofstream output(path, std::ios::out | std::ios::binary);
+    output.write((char *)IV, 16);
+    output.close();
+
+}
+
+void SM4::readIV(uint32_t *IV)
+{
+    std::string path = "D:/IV";
+    // the mode ios::out of ofstream support that if file does not exist, it will create a file
+    std::ifstream input(path, std::ios::in | std::ios::binary);
+    input.read((char *)IV, 16);
+    input.close();
+
+}
+
+

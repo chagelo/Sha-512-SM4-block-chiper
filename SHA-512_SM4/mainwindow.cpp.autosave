@@ -49,8 +49,8 @@ void MainWindow::on_encrypt_clicked()
         auto startTime_all = std::chrono::high_resolution_clock::now();
         SM4::encrypt(pwd, encry_file, savefile, mode);
         auto endTime_all = std::chrono::high_resolution_clock::now();
-        auto x_all = std::chrono::duration_cast<std::chrono::milliseconds>(startTime_all - endTime_all).count();
-        cout << " time of encryption: " << x_all << endl;
+        auto x_all = std::chrono::duration_cast<std::chrono::milliseconds>(endTime_all - startTime_all).count();
+        cout << " time of encryption: " << x_all << "ms" << endl;
 
         cout << "encrypt successfully" << endl;
     }
