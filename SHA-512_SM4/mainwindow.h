@@ -2,12 +2,11 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "ui_mainwindow.h"
 #include <QMessageBox>
 #include <QFileDialog>
-#include <iostream>
+#include <QTextCodec>
+#include "ui_mainwindow.h"
 #include "SM4.h"
-
 
 using std::string;
 
@@ -32,6 +31,9 @@ private slots:
     void on_encrypt_clicked();
 
     void on_decrypt_clicked();
+    QString str2qstr(const string str);
+
+    string qstr2str(const QString qstr);
 
 private:
     Ui::MainWindow *ui;

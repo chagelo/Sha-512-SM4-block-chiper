@@ -8,6 +8,7 @@
 #include "Sha.h"
 #include <fstream>
 #include "mode.h"
+#include <QFileInfo>
 
 class SM4 {
 private:

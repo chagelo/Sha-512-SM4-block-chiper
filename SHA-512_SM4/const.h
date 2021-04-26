@@ -9,6 +9,7 @@
 #include <iostream>
 #include <cstring>
 #include <vector>
+#include <algorithm>
 
 using std::string;
 using std::vector;

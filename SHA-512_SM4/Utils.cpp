@@ -52,7 +52,7 @@ std::vector<uint8_t> Utils::readfile(std::string path, size_t &len)
     size_t padding_len = 16 - len % 16;
     size_t all_len = len + padding_len;
 
-    std::vector<uint8_t>plain = GenerateData(all_len + 1);
+    std::vector<uint8_t>plain = GenerateData(all_len + 10);
 
     // first write this, lost signal &
     input.read((char *)&plain[0], len);
@@ -64,12 +64,17 @@ std::vector<uint8_t> Utils::readfile(std::string path, size_t &len)
 
 }
 
-void Utils::writefile(std::string savefile, std::vector<uint8_t> data, size_t len)
+void Utils::writefile(std::string savefile, std::vector<uint8_t> data, size_t len, std::string suffix)
 {
     std::ofstream output(savefile.c_str(), std::ios::out | std::ios::binary);
     output.write((char *) &(data[0]), len);
-    output.close();
+    if (suffix != "") {
+        output.write(suffix.c_str(), suffix.size());
+        char len_suffix = suffix.size();
+        output.write(&len_suffix,1);
 
+    }
+    output.close();
     //    for (size_t i = 0; i < all_len; ++i)
     //        printf("%x ", plain[i]);
 }

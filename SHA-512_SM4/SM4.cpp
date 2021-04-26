@@ -118,10 +118,12 @@ void SM4::encrypt(string pwd, string filepath, string savefile, string mode)
 //    x = std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count();
 //    cout << "solve time:" << x << endl;
 
+    // get suffix of file
+    string suffix = filepath.substr(filepath.find_last_of('.') + 1);
 
     // write encrypted data to file
-    Utils::writefile(savefile, plain, all_len);
-    cout << all_len << endl;
+    Utils::writefile(savefile, plain, all_len, suffix);
+    // cout << all_len << endl;
     return;
 }
 
@@ -158,7 +160,19 @@ void SM4::decrypt(std::string pwd, std::string filepath, std::string savefile, s
     // cout << x << endl;
     // cout << len << endl;
 
-    assert(len % 4 == 0);
+
+    uint8_t suffix_len = chiper[len - 1];
+    string suffix = "";
+    for (size_t i = len - suffix_len - 1; i < len - 1; ++i)
+            suffix += (char)chiper[i];
+
+    len = len - suffix_len - 1;
+
+    if (len % 4 != 0) {
+        cout << "select file incrorrectly!";
+        return ;
+    }
+    //assert(len % 4 == 0);
 
     uint32_t IV[4];
     readIV(IV);
@@ -205,11 +219,11 @@ void SM4::decrypt(std::string pwd, std::string filepath, std::string savefile, s
     // split, contrary to padding
     len -= (size_t)chiper[len - 1];
 
-
     // write decrypted data to file
-    Utils::writefile(savefile, chiper, len);
-
-
+    Utils::writefile(savefile, chiper, len, "");
+    if (savefile.substr(savefile.find_last_of('.') + 1) != suffix) {
+        rename(savefile.c_str(), (savefile + "." + suffix).c_str());
+    }
     return;
 }
 

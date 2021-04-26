@@ -27,7 +27,7 @@ public:
     static std::vector<uint8_t> GenerateData(std::size_t bytes);
     static int _stoi(std::string mode);
     static std::vector<uint8_t> readfile(std::string path, size_t &len);
-    static void writefile(std::string savefile, std::vector<uint8_t>data, size_t len);
+    static void writefile(std::string savefile, std::vector<uint8_t>data, size_t len, std::string suffix = "");
 };
 
 
